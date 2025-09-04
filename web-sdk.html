@@ -13,20 +13,16 @@
 </head>
 
 <body>
-    <button id="btn_init">Init Web SDK</button><br>
     <button id="btn_attr">Get attribution</button><br>
     <button id="btn_event">Track "Test Event For iOS 26" event</button><br>
     <button id="btn_clean">Clear browser storage</button><br>
     <script>
-      let initSdk = document.getElementById('btn_init')
-      initSdk.addEventListener('click', function () {
-        Adjust.initSdk({
-          "appToken": "qn3ktsl8qa68",
-          "environment": "production",
-          "logLevel": "verbose",
-          "logOutput": "#log"
-        })
-      })
+    Adjust.initSdk({
+        "appToken": "qn3ktsl8qa68",
+        "environment": "production",
+        "logLevel": "verbose",
+        "logOutput": "#log"
+    })
       
       let getAttr = document.getElementById('btn_attr')
       getAttr.addEventListener('click', function () {
