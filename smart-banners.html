@@ -4,7 +4,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Smart Banner SDK example page</title>
+  <title>Test Smart Banners</title>
 
   <!-- Adjust Smart Banner loading script -->
   <script type="application/javascript">
@@ -55,7 +55,12 @@
 </head>
 
 <body>
-  <h1>Example page</h1>
+  <a href="index.html">Back to main page</a>
+  
+  <h1>Test Smart Banners</h1>
+
+  <p>Note: open this page on the mobile device to see the banner.</p>
+
   <div id="banner-parent"></div>
 
   <div style="margin: 20px;">
@@ -68,7 +73,7 @@
     const htmlElement = document.getElementById('banner-parent');
 
     AdjustSmartBanner.init({
-      appToken: "j30o219ed9mo", // Test iOS 26 space
+      appToken: "j30o219ed9mo", // "Test iOS 26" space
       logLevel: 'verbose',
       language: 'de',
       androidDeepLinkPath: 'android/in/app/path/to/{page}',
