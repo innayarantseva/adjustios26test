@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Smart Banner SDK example page</title>
+
+  <!-- Adjust Smart Banner loading script -->
+  <script type="application/javascript">
+    !(function (e, n, t, a, o, s, r, i, c) {
+       var d = o + "_q";
+       (e[o] = e[o] || {}), (e[d] = e[d] || []);
+       for (var u = 0; u < s.length; u++) r(e[o], e[d], s[u]);
+       (i = n.createElement(t)),
+          (c = n.getElementsByTagName(t)[0]),
+          (i.async = !0),
+          (i.src = "https://cdn.adjust.com/adjust-smart-banner-latest.min.js"),
+          (i.onload = function () {
+             e[o] = e[o].default;
+             for (var n = 0; n < e[d].length; n++)
+                e[o][e[d][n][0]]
+                   ? e[o][e[d][n][0]].apply(e[o], e[d][n][1])
+                   : console.error(
+                        "No such function found in " + o + ": " + e[d][n][0],
+                     );
+             e[d] = [];
+          }),
+          c.parentNode.insertBefore(i, c);
+    })(
+       window,
+       document,
+       "script",
+       0,
+       "AdjustSmartBanner",
+       [
+          "init",
+          "show",
+          "hide",
+          "setLanguage",
+          "setIosDeepLinkPath",
+          "setAndroidDeepLinkPath",
+          "setContext",
+          "setAndroidAppSchema",
+          "setDeepLinkPath",
+       ],
+       function (e, n, t) {
+          e[t] = function () {
+             n.push([t, arguments]);
+          };
+       },
+    );
+  </script>
+  <!-- -->
+</head>
+
+<body>
+  <h1>Example page</h1>
+  <div id="banner-parent"></div>
+
+  <div style="margin: 20px;">
+    <button id="hide-banner">Hide banner</button>
+    <button id="show-banner">Show banner</button>
+  </div>
+
+  <!-- Adjust Smart Banner initialisation -->
+  <script type="application/javascript">
+    const htmlElement = document.getElementById('banner-parent');
+
+    AdjustSmartBanner.init({
+      appToken: "j30o219ed9mo", // Test iOS 26 space
+      logLevel: 'verbose',
+      language: 'de',
+      androidDeepLinkPath: 'android/in/app/path/to/{page}',
+      iosDeepLinkPath: 'ios/in/app/path/to/{content}',
+      context: { page: '', content: '' },
+      onCreated: () => { console.log('Banner rendered'); },
+      onDismissed: () => { console.log('Banner dismissed'); }
+    })
+
+  </script>
+  <!-- -->
+
+  <!-- Example: change language -->
+  <div style="margin: 20px;">
+    <label for="language-selector">Banner language:</label>
+    <select name="language-selector" id="language-selector" onchange="">
+      <option value="en">English</option>
+      <option value="de">Deutsch</option>
+    </select>
+  </div>
+
+  <!-- Example: show and hide functions -->
+  <script type="application/javascript">
+    document.getElementById('language-selector')
+      .addEventListener('change', evente => {
+        AdjustSmartBanner.setLanguage(event.target.value);
+      });
+
+    document.getElementById('hide-banner')
+      .addEventListener('click', event => {
+        AdjustSmartBanner.hide();
+      });
+
+    document.getElementById('show-banner')
+      .addEventListener('click', event => {
+        AdjustSmartBanner.show();
+      });
+  </script>
+  <!-- -->
+
+</body>
+
+</html>
