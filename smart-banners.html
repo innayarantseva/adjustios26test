@@ -75,10 +75,6 @@
     AdjustSmartBanner.init({
       appToken: "j30o219ed9mo", // "Test iOS 26" space
       logLevel: 'verbose',
-      language: 'de',
-      androidDeepLinkPath: 'android/in/app/path/to/{page}',
-      iosDeepLinkPath: 'ios/in/app/path/to/{content}',
-      context: { page: '', content: '' },
       onCreated: () => { console.log('Banner rendered'); },
       onDismissed: () => { console.log('Banner dismissed'); }
     })
@@ -92,13 +88,14 @@
     <select name="language-selector" id="language-selector" onchange="">
       <option value="en">English</option>
       <option value="de">Deutsch</option>
+      <option value="ru">Русский</option>
     </select>
   </div>
 
   <!-- Example: show and hide functions -->
   <script type="application/javascript">
     document.getElementById('language-selector')
-      .addEventListener('change', evente => {
+      .addEventListener('change', event => {
         AdjustSmartBanner.setLanguage(event.target.value);
       });
 
